@@ -15,27 +15,27 @@
             </nav>
         </header>
         <main>
-            <section>
-                <h2>Hi, I'm Matthew.</h2>
+            <h2>Hi, I'm Matthew.</h2>
+            <section class="about-me">
                 <aside>
                     <picture> <!-- This will probably be changed to a different picture eventually -->
-                        <source srcset="/assets/IMG_6562_2_240x320.jpg" type="images/jpg" media="(min-width: 240px)">
+                        <source srcset="/assets/IMG_6562_2_240x320.jpg" type="image/jpg" media="(min-width: 240px)">
                         <source srcset="/assets/IMG_6562.avif" type="image/avif" media="(min-width: 240px)">
                         <source srcset="/assets/IMG_6562_2_240x320.webp" type="image/webp" media="(min-width: 240px)">
-                        <img src="/assets/IMG_6562_lowres.jpg" alt="" width="240" height="320">
+                        <img src="/assets/IMG_6562_lowres.jpg" alt="A picture of Matthew" width="240" height="auto">
                     </picture>
                 </aside>
                 <article>
                     <h3>All About Me</h3>
                     <p>
                         I'm a 4th-year student at UCSD studying Computer Science. I have worked on several projects covering
-                        various aspects of software engineering, including both <b>front and back-end development, AI/Machine 
-                        Learning, embedded systems</b>, and more.<br>
+                        various aspects of software engineering, including both <strong>front and back-end development, AI/Machine 
+                        Learning, embedded systems</strong>, and more.<br>
                         I first started programming with Java in high school. I quickly found that I enjoyed seeing what I made 
                         appear on the screen. I liked the creativity and diversity that programming enabled. I began expanding my 
                         skillset and learning other languages, and I eventually decided to pursue programming further in college.
                         <br>
-                        Recently, I've been interested more in <b>web development</b>. I've learned that the design of a webpage has a big 
+                        Recently, I've been interested more in <strong>web development</strong>. I've learned that the design of a webpage has a big 
                         impact on the overall user experience, and can make or break a product. I've also been learning more about
                         machine learning. I think that AI will continue to play a bigger role in the business and professional 
                         world, and I'm interested in seeing how AI can positively affect the software field.
@@ -43,31 +43,34 @@
                 </article>
             </section>
             <h2>My Experience</h2>
-            <section>
-                <h3>My Resume</h3>
-                <iframe id="resume" title="resume" width="232" height="300"
-                    src="/assets/MyResume.pdf"></iframe>
-                <button type="button">Download my resume</button>
+            <section class="my-experience">
+                <section id="my-resume">
+                    <h3>My Resume</h3>
+                    <iframe id="resume" title="resume" width="232" height="300"
+                        src="/assets/MyResume.pdf"></iframe>
+                    <button type="button">Download my resume</button>
+                </section>
+                <section id="my-skills">
+                    <h3>My Skills</h3>
+                    <ul>
+                        <li><strong>Languages:</strong> C/C++, Java, Python, JavaScript, HTML/CSS</li>
+                        <li>Databases/SQL</li>
+                        <li>Full-stack development</li>
+                        <li>Machine learning</li>
+                        <li>Restful API</li>
+                        <li>Docker</li>
+                        <li>Testing/debugging</li>
+                    </ul>
+                </section>
+                <section id="education">
+                    <h3>Education and Certifications</h3>
+                    <ul>
+                        <li><strong>B.S. Computer Science</strong> (in progress) - <i>University of California, San Diego</i></li>
+                        <li><strong>Deep Learning Certificate</strong> - <i>MITxPro Program</i></li>
+                    </ul>
+                </section>
             </section>
-            <section>
-                <h3>My Skills</h3>
-                <ul>
-                    <li><strong>Languages:</strong> C/C++, Java, Python, JavaScript, HTML/CSS</li>
-                    <li>Databases/SQL</li>
-                    <li>Full-stack development</li>
-                    <li>Machine learning</li>
-                    <li>Restful API</li>
-                    <li>Docker</li>
-                    <li>Testing/debugging</li>
-                </ul>
-            </section>
-            <section>
-                <h3>Education and Certifications</h3>
-                <ul>
-                    <li><strong>B.S. Computer Science</strong> (in progress) - <i>University of California, San Diego</i></li>
-                    <li><strong>Deep Learning Certificate</strong> - <i>MITxPro Program</i></li>
-                </ul>
-            </section>
+            
         </main>
         <footer>
             <nav class="site-links">
