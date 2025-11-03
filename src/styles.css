@@ -10,19 +10,82 @@ body {
     font-family: swansea, Helvetica, sans-serif;
     /* background-color: lightblue; */
     background-color: light-dark(var(--light-background-color, lightblue), var(--dark-background-color, black));
-    font-size: 16px;
+    font-size: 12px;
 }
 
 
 
 header {
     border: 1px solid var(--my-header-color, lightblue);
-    padding-bottom: 0.75rem;
+    padding-bottom: 5dvh;
+    padding-left: 2dvw;
+    padding-right: 2dvw;
     background-color: var(--my-header-color, lightblue);
     position: sticky;
     top: 0;
 }
 
+nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    & a {
+        position: relative; /* anchor becomes positioning context */
+        display: inline-block;
+        font-size: 1em;
+        border-radius: 25px;
+        padding: 0.5em 1em;
+        color: white;
+        text-decoration: none;
+        overflow: hidden;
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 0%;
+            background-color: green;
+            z-index: -1;
+            transition: height 0.4s ease;
+            border-radius: 25px;
+        }
+
+        &:hover::before {
+            height: 100%;
+        }
+
+        &:hover {
+            color: blue;
+        }
+    }
+
+}
+
+nav.links {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    align-items: center;
+    
+}
+
+nav.site-links {
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+    align-items: center; 
+}
+
+form {
+    background-color: lightslategray;
+}
+
+form#feedback-form {
+    grid-column: 1 / 3;
+    grid-row: 3 / 4;
+    align-items: center; 
+}
 
 
 @media screen and (min-width: 600px) {
@@ -34,6 +97,10 @@ header {
 @media screen and (min-width: 900px) {
     body {
         font-size: 20px;
+    }
+
+    nav a {
+        font-size: 1.5em;
     }
 
     section.about-me {
@@ -102,60 +169,17 @@ header {
 
 
 footer {
-    border: 1px solid var(--light-background-color, lightblue);
+    background-color: bisque;
+    border: 1px solid var(--light-background-color, bisque);
     padding-top: 0.75rem;
-    display: grid;
 }
 
 footer.form-foot {
+    display: grid;
     grid-template-rows: 1fr 1fr 5fr;
 }
 
-nav {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    & a {
-        font-size: 1.5em;
-        /* border: 1px solid chocolate; */
-        border-radius: 25px;
-        padding: 0.5em;
-        color: white;
-        /* background-color: chocolate; */
-        transition: background-color 0.3s ease;
-    }
 
-    & a:hover {
-        /* box-shadow: 10% 10% 5% slategray; */
-        background-color: green;
-        border-color: green;
-        color: blue;
-    }
-}
-
-nav.links {
-    grid-column: 1 / 3;
-    grid-row: 1 / 2;
-    align-items: center;
-    
-}
-
-nav.site-links {
-    grid-column: 1 / 3;
-    grid-row: 2 / 3;
-    align-items: center; 
-}
-
-form {
-    background-color: lightslategray;
-}
-
-form[id="feedback-form"] {
-    grid-column: 1 / 3;
-    grid-row: 3 / 4;
-    align-items: center; 
-}
 
 @font-face {
   font-family: swansea;
@@ -192,14 +216,10 @@ form[id="feedback-form"] {
     }
 
     footer {
-        border-color: var(--dark-background-color, black);
+        background-color: lightseagreen;
+        border-color: var(--dark-background-color, lightseagreen);
     }
 
-    nav.links a:hover {
-        background-color: green;
-        border-color: green;
-        color: blue;
-    }
 }
 
 @view-transition {
