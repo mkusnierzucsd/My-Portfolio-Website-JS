@@ -36,7 +36,7 @@ aside img {
     height: auto;
 }
 
-iframe {
+iframe#mlsite {
     width: 75%;
     height: 100%;
 }
