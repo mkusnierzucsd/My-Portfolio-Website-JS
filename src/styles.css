@@ -113,6 +113,10 @@ form#feedback-form {
     align-items: center; 
 }
 
+form:has(input:invalid) {
+    border: 2px solid red;
+}
+
 button {
     size: 2em;
 }
