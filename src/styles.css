@@ -10,6 +10,10 @@
     color-scheme: light dark;
 }
 
+header {
+    z-index: 2;
+}
+
 body {
     font-family: swansea, Helvetica, sans-serif;
     background-color: light-dark(var(--light-background-color, lightblue), var(--dark-background-color, black));
@@ -22,6 +26,20 @@ body {
     to { opacity: 1; }
 }
 
+img {
+    max-width: 33%;
+    height: auto;
+}
+
+aside img {
+    max-width: 33%;
+    height: auto;
+}
+
+iframe {
+    width: 75%;
+    height: 100%;
+}
 
 header {
     border: 1px solid var(--my-header-color, lightblue);
@@ -185,6 +203,11 @@ button {
     button {
         font-size: 0.5em;
     }
+
+    aside img {
+        max-width: 100%;
+        height: auto;
+    }
 }
 
 
@@ -243,4 +266,9 @@ button:hover {
         border-color: var(--dark-background-color, lightseagreen);
     }
 
+}
+
+img#colab-img {
+    filter: contrast(1.25);
+    z-index: 1;
 }
