@@ -8,11 +8,15 @@
 
 body {
     font-family: swansea, Helvetica, sans-serif;
-    /* background-color: lightblue; */
     background-color: light-dark(var(--light-background-color, lightblue), var(--dark-background-color, black));
     font-size: 12px;
+    animation: fadeIn 0.8s ease-in;
 }
 
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 
 
 header {
@@ -31,7 +35,7 @@ nav {
     flex-wrap: wrap;
     justify-content: space-around;
     & a {
-        position: relative; /* anchor becomes positioning context */
+        position: relative;
         display: inline-block;
         font-size: 1em;
         border-radius: 25px;
@@ -179,7 +183,10 @@ footer.form-foot {
     grid-template-rows: 1fr 1fr 5fr;
 }
 
-
+button:hover {
+  transform: scale(1.03);
+  transition: transform 0.3s ease;
+}
 
 @font-face {
   font-family: swansea;
@@ -220,8 +227,4 @@ footer.form-foot {
         border-color: var(--dark-background-color, lightseagreen);
     }
 
-}
-
-@view-transition {
-   navigation: auto;
 }
