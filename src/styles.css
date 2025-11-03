@@ -1,7 +1,7 @@
 :root {
-    --my-header-color: rgb(106, 106, 255);
-    --light-background-color: rgb(36, 174, 192);
-    --dark-background-color: rgb(19, 31, 33);
+    --my-header-color: color(from blue srgb 0.25 0.1 0.67);
+    --light-background-color: color-mix(in hsl, hsl(200 50 80), rgb(50, 88, 58));
+    --dark-background-color: color(from black srgb 0.07451 0.121568 0.129412);
 
     --small-font: 12px;
     --medium-font: 18px;
@@ -212,7 +212,7 @@ button {
 
 
 footer {
-    background-color: bisque;
+    background-color: rgb(66, 203, 45);
     border: 1px solid var(--light-background-color, bisque);
     padding-top: 0.75rem;
 }
