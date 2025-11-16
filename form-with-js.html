@@ -127,7 +127,7 @@
                 <output class="hidden" for="error" id="email-error"></output>
                 <output for="info" id="email-info"></output>
                 <label for="message">Message</label>
-                <textarea id="message" name="message" rows="5" cols="33" maxlength="500" required></textarea><br>
+                <textarea id="message" name="message" rows="5" cols="33" maxlength="50" required></textarea><br>
                 <output class="hidden" for="error" id="message-error"></output>
                 <output for="info" id="message-info"></output>
                 <input type="hidden" name="possible_bot" value="true">
@@ -188,16 +188,31 @@
             });
 
             const message = document.getElementById("message");
+            const messageError = document.getElementById("message-error");
+            const messageInfo = document.getElementById("message-info");
 
             message.addEventListener("input", (event) => {
-                // if(message.value.length >= 0.75 * message.maxLength) {
+                const length = message.value.length;
+                const maxLength = message.maxLength;
 
-                // }
+                messageInfo.textContent = `${length}/${maxLength} characters.`; 
+
+                if(length >= 0.75 * maxLength && length < maxLength) {
+                    message.style.outline = "2px solid orange";
+                    message.style.borderColor = "orange";
+                    messageError.textContent = ""; 
+                }
+
+                if(length >= maxLength) {
+                    message.style.outline = "2px solid red";
+                    message.style.borderColor = "red";
+                    messageError.textContent = "You have reached the character limit."; 
+                }
 
                 if(!message.checkValidity()) {
                     message.setCustomValidity("Your message should be anywhere between 1 and 500 characters");
                 } else {
-                    email.setCustomValidity("");
+                    message.setCustomValidity("");
                 }
             });
 
