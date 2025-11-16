@@ -76,30 +76,6 @@
                 border-color: red;
             }
 
-            /* input#name:invalid ~ output#nameError::before {
-                content: "You must fill out your name";
-            }
-
-            input#name:invalid ~ output#nameInfo::before {
-                content: "Please enter at least 3 characters. Please do not enter numbers or special characters";
-            }
-
-            input#email:invalid ~ output#emailError::before {
-                content: "You must fill out your email";
-            }
-
-            input#email:invalid ~ output#emailInfo::before {
-                content: "Your input should be at least 5 characters. Must follow standard email format";
-            }
-
-            textarea:invalid ~ output#messageError::before {
-                content: "You must fill out a message";
-            }
-
-            textarea:invalid ~ output#messageInfo::before {
-                content: "Your message should be anywhere between 1 and 500 characters";
-            } */
-
             button {
                 background-color: cornflowerblue;
                 color: white;
@@ -129,6 +105,12 @@
                 content: " *";
                 color: #b00020;
             }
+
+            .hidden {
+                content: "";
+            }
+            
+
         </style>
         
     </head>
@@ -138,16 +120,16 @@
                 <legend>Contact Me</legend>
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" minlength="3" pattern="[A-Za-z\s'\-]+" autofocus required><br>
-                <output for="error" id="nameError"></output>
-                <output for="info" id="nameInfo"></output>
+                <output class="hidden" for="error" id="name-error"></output>
+                <output for="info" id="name-info"></output>
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" inputmode="email" required><br>
-                <output for="error" id="emailError"></output>
-                <output for="info" id="emailInfo"></output>
+                <output class="hidden" for="error" id="email-error"></output>
+                <output for="info" id="email-info"></output>
                 <label for="message">Message</label>
                 <textarea id="message" name="message" rows="5" cols="33" maxlength="500" required></textarea><br>
-                <output for="error" id="messageError"></output>
-                <output for="info" id="messageInfo"></output>
+                <output class="hidden" for="error" id="message-error"></output>
+                <output for="info" id="message-info"></output>
                 <input type="hidden" name="possible_bot" value="true">
                 <button>Submit</button>
             </fieldset>
@@ -155,18 +137,49 @@
     </body>
     <footer>
         <script>
-            const name_input = document.getElementById("name");
-            name_input.addEventListener("input", (event) => {
-                if(!name_input.checkValidity()) {
-                    name_input.setCustomValidity("Please enter at least 3 characters. Please do not enter numbers or special characters");
+            const nameInput = document.getElementById("name");
+            const allowedName = /^[A-Za-z\s'\-]+$/;
+            const emailInput = document.getElementById("email");
+            const allowedEmail = /^[A-Za-z0-9\.@\-]+$/;
+
+            function showError(input, message) {
+                const errorOutput = document.getElementById(input.id + "-error");
+                errorOutput.textContent = message;
+
+
+                setTimeout(() => {
+                    errorOutput.textContent = "";
+                }, 2000);
+            }
+
+            function enforceNameRules(event) {
+                if (!allowedName.test(event.target.value)) {
+                    showError(event.target, "Invalid character entered.");
+                    event.target.value = event.target.value.replace(/[^A-Za-z\s'\-]/g, "");
+                }
+            }
+
+            function enforceEmailRules(event) {
+                if (!allowedEmail.test(event.target.value)) {
+                    showError(event.target, "Invalid character entered.");
+                    event.target.value = event.target.value.replace(/[^A-Za-z0-9\.@\-]/g, "");
+                }
+            }
+
+            nameInput.addEventListener("input", enforceNameRules);
+
+
+            nameInput.addEventListener("input", (event) => {
+                if(!nameInput.checkValidity()) {
+                    nameInput.setCustomValidity("Please enter at least 3 characters. Please do not enter numbers or special characters");
                 } else {
-                    name_input.setCustomValidity("");
+                    nameInput.setCustomValidity("");
                 }
             });
 
+            emailInput.addEventListener("input", enforceEmailRules);
 
-            const email = document.getElementById("email");
-            email.addEventListener("input", (event) => {
+            emailInput.addEventListener("input", (event) => {
                 if (!email.checkValidity()) {
                     email.setCustomValidity("Must be a valid email address");
                 } else {
@@ -175,7 +188,12 @@
             });
 
             const message = document.getElementById("message");
-            message.addEventListener("textarea", (event) => {
+
+            message.addEventListener("input", (event) => {
+                // if(message.value.length >= 0.75 * message.maxLength) {
+
+                // }
+
                 if(!message.checkValidity()) {
                     message.setCustomValidity("Your message should be anywhere between 1 and 500 characters");
                 } else {
