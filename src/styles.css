@@ -15,13 +15,60 @@ body {
     font-family: swansea, Helvetica, sans-serif;
     /* background-color: light-dark(var(--light-background-color, lightblue), var(--dark-background-color, black)); */
     font-size: var(--small-font, 12px);
-    animation: fadeIn 0.8s ease-in;
+    /* animation: fadeIn 0.8s ease-in; */
 }
 
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
+
+@view-transition {
+    navigation: auto;
+}
+
+@supports not (navigation: auto) {
+    body {
+        animation: fadeIn 0.8s ease-in;
+    }
+}
+
+@keyframes fade-out-up {
+    from {
+    opacity: 1;
+    transform: translateY(0%);
+    }
+    to {
+    opacity: 0;
+    transform: translateY(100%);
+    }
+}
+@keyframes fade-in-down {
+    from {
+    opacity: 0;
+    transform: translateY(-100%);
+    }
+    to {
+    opacity: 1;
+    transform: translateY(0%);
+    }
+}
+
+::view-transition-old(root) {
+    animation: 0.4s ease-out both fade-out-up;
+}
+
+
+::view-transition-new(root) {
+    animation: 0.4s ease-out both fade-in-down;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    /* keep background consistent while animating */
+    background: transparent;
+}
+
 
 img {
     max-width: 33%;
