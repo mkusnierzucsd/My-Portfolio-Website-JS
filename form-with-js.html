@@ -7,12 +7,18 @@
         <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
         
         <style>
+            :root {
+                --my-header-color: rgb(84, 178, 212);
+                --my-header-color-dark: rgb(7, 1, 176);
+                --light-background-color: rgb(169, 233, 231);
+                --dark-background-color: color(from black srgb 0.07451 0.121568 0.129412);
+            }
             body {
                 font-family: Arial, Helvetica, sans-serif;
-                background-color: aliceblue;
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
-                align-items: flex-start;
+                align-items: center;
                 padding: 2rem;
             }
 
@@ -119,15 +125,15 @@
             <fieldset id="ctest" name="ctest">
                 <legend>Contact Me</legend>
                 <label for="name">Name</label>
-                <input type="text" name="name" id="name" minlength="3" pattern="[A-Za-z\s'\-]+" autofocus required><br>
+                <input type="text" name="name" id="name" minlength="3" pattern="[A-Za-z\s'\-]+" autofocus required>
                 <output class="hidden" for="error" id="name-error"></output>
                 <output for="info" id="name-info">Enter at least 3 characters. Letters, spaces, apostrophes, and hyphens allowed.</output>
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" inputmode="email" required><br>
+                <input type="email" name="email" id="email" inputmode="email" required>
                 <output class="hidden" for="error" id="email-error"></output>
                 <output for="info" id="email-info">Enter a valid email address (example: name@example.com).</output>
                 <label for="message">Message</label>
-                <textarea id="message" name="message" rows="5" cols="33" maxlength="500" required></textarea><br>
+                <textarea id="message" name="message" rows="5" cols="33" maxlength="500" required></textarea>
                 <output class="hidden" for="error" id="message-error"></output>
                 <output for="info" id="message-info"></output>
                 <input type="hidden" name="possible_bot" value="true">
@@ -135,6 +141,11 @@
                 <button>Submit</button>
             </fieldset>
         </form>
+        <label class="switch">
+            Light/Dark Mode Toggle
+            <input type="checkbox" id="themeToggle" onclick="toggleTheme()">
+            <span class="slider"></span>
+        </label>
     </body>
     <script>
         const form_errors= [];
@@ -251,4 +262,5 @@
             document.getElementById("form-errors").value = encoded;
         });
     </script>
+    <script src="src/script.js"></script>
 </html>

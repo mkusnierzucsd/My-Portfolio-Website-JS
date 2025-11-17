@@ -6,17 +6,24 @@
         <title>Form No JS</title>
         <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
         <style>
+            :root {
+                --my-header-color: rgb(84, 178, 212);
+                --my-header-color-dark: rgb(7, 1, 176);
+                --light-background-color: rgb(169, 233, 231);
+                --dark-background-color: color(from black srgb 0.07451 0.121568 0.129412);
+            }
             body {
                 font-family: Arial, Helvetica, sans-serif;
-                background-color: aliceblue;
+                /* background-color: aliceblue; */
                 display: flex;
                 justify-content: center;
-                align-items: flex-start;
+                align-items:center;
+                flex-direction: column;
                 padding: 2rem;
             }
 
             form {
-                background: white;
+                background-color: white;
                 border: 1px solid lightslategray;
                 border-radius: 10px;
                 padding: 2rem;
@@ -120,7 +127,7 @@
             }
 
             output[for="info"] {
-                color: black;
+                color: green;
             }
 
             label[for]:has(+ input[required])::after,
@@ -137,20 +144,26 @@
             <fieldset id="ctest" name="ctest">
                 <legend>Contact Me</legend>
                 <label for="name">Name</label>
-                <input type="text" name="name" id="name" minlength="3" pattern="[A-Za-z\s'\-]+" autofocus required><br>
+                <input type="text" name="name" id="name" minlength="3" pattern="[A-Za-z\s'\-]+" autofocus required>
                 <output for="error" id="nameError"></output>
                 <output for="info" id="nameInfo"></output>
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" inputmode="email" minlength="5" required><br>
+                <input type="email" name="email" id="email" inputmode="email" minlength="5" required>
                 <output for="error" id="emailError"></output>
                 <output for="info" id="emailInfo"></output>
                 <label for="message">Message</label>
-                <textarea id="message" name="message" rows="5" cols="33" maxlength="500" required></textarea><br>
+                <textarea id="message" name="message" rows="5" cols="33" maxlength="500" required></textarea>
                 <output for="error" id="messageError"></output>
                 <output for="info" id="messageInfo"></output>
                 <input type="hidden" name="possible_bot" value="true">
                 <button>Submit</button>
             </fieldset>
         </form>
+        <label class="switch">
+            Light/Dark Mode Toggle
+            <input type="checkbox" id="themeToggle" onclick="toggleTheme()">
+            <span class="slider"></span>
+        </label>
+        <script src="src/script.js"></script>
     </body>
 </html>
